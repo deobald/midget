@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MidgetUI", "MidgetUI\MidgetUI.csproj", "{EC90A5DD-9473-48BD-BEEF-E37266798D20}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Midget3D", "Midget3D\Midget3D.csproj", "{3CDAF30A-1CA0-4685-82B0-AD2F01D691BB}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{EC90A5DD-9473-48BD-BEEF-E37266798D20}.Debug.ActiveCfg = Debug|.NET
+		{EC90A5DD-9473-48BD-BEEF-E37266798D20}.Debug.Build.0 = Debug|.NET
+		{EC90A5DD-9473-48BD-BEEF-E37266798D20}.Release.ActiveCfg = Release|.NET
+		{EC90A5DD-9473-48BD-BEEF-E37266798D20}.Release.Build.0 = Release|.NET
+		{3CDAF30A-1CA0-4685-82B0-AD2F01D691BB}.Debug.ActiveCfg = Debug|.NET
+		{3CDAF30A-1CA0-4685-82B0-AD2F01D691BB}.Debug.Build.0 = Debug|.NET
+		{3CDAF30A-1CA0-4685-82B0-AD2F01D691BB}.Release.ActiveCfg = Release|.NET
+		{3CDAF30A-1CA0-4685-82B0-AD2F01D691BB}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
