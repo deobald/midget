@@ -18,7 +18,7 @@ namespace Midget
 		/// Object types and corresponding names
 		/// </summary>
 		public enum ObjectTypes { MeshTeapot, MeshSphere, MeshTorus, MeshBox, 
-			MeshCylinder, MeshPolygon, MeshText, PolySphere };
+			MeshCylinder, MeshPolygon, MeshText, PolySphere, MeshControlPoint, Curve, ParticleSystem };
 			
 		#endregion
 
@@ -32,43 +32,99 @@ namespace Midget
 		/// </summary>
 		/// <param name="iObjectType">The type of object that is too be created</param>
 		/// <returns>Whether or not a new 3D object could be successfully added to the scene</returns>
-		public static bool CreateObject(int iObjectType)
+		public static IObject3D CreateObject(int iObjectType)
 		{
+			// the new object we're creating - this variable is required to fire the CreateObject event
+			IObject3D newObject;
+			
 			switch (iObjectType)
 			{
 				case (int)ObjectTypes.MeshTeapot:
-					DeviceManager.Instance.AddObject(new MeshTeapot(DeviceManager.Instance.Device));
+					newObject = new MeshTeapot(DeviceManager.Instance.Device);
 					break;
 
 				case (int)ObjectTypes.MeshSphere:
-					DeviceManager.Instance.AddObject(new MeshSphere(DeviceManager.Instance.Device));
+					newObject = new MeshSphere(DeviceManager.Instance.Device);
 					break;
 
 				case (int)ObjectTypes.MeshTorus:
-					DeviceManager.Instance.AddObject(new MeshTorus(DeviceManager.Instance.Device));
+					newObject = new MeshTorus(DeviceManager.Instance.Device);
 					break;
 
 				case (int)ObjectTypes.MeshBox:
-					DeviceManager.Instance.AddObject(new MeshBox(DeviceManager.Instance.Device));
+					newObject = new MeshBox(DeviceManager.Instance.Device);
 					break;
 
 				case (int)ObjectTypes.MeshCylinder:
-					DeviceManager.Instance.AddObject(new MeshCylinder(DeviceManager.Instance.Device));
+					newObject = new MeshCylinder(DeviceManager.Instance.Device);
 					break;
 
 				case (int)ObjectTypes.MeshPolygon:
-					DeviceManager.Instance.AddObject(new MeshPolygon(DeviceManager.Instance.Device));
+					newObject = new MeshPolygon(DeviceManager.Instance.Device);
 					break;
 
 				case (int)ObjectTypes.MeshText:
-					DeviceManager.Instance.AddObject(new MeshText(DeviceManager.Instance.Device));
+					newObject = new MeshText(DeviceManager.Instance.Device);
+					break;
+
+				case (int)ObjectTypes.Curve:
+					newObject = new Curve(DeviceManager.Instance.Device);
+					break;
+
+				case (int)ObjectTypes.MeshControlPoint:
+					newObject = new MeshCtrlPt(DeviceManager.Instance.Device);
+					break;
+
+				case (int)ObjectTypes.ParticleSystem:
+					newObject = new ParticleSystem(DeviceManager.Instance.Device);
 					break;
 
 				default:
+					return null;
+			}
+			
+			return newObject;
+		}
+
+		/// <summary>
+		/// Similar to CreateObject(int), this version allows us to enter user data for datatypes 
+		/// such as MeshText
+		/// </summary>
+		/// <param name="iObjectType">The enumerated type of the object we are creating</param>
+		/// <param name="text">The text to initialize the object with</param>
+		/// <returns>Whether or not the object was successfully created</returns>
+		public static IObject3D CreateObject(int iObjectType, string text)
+		{
+			IObject3D newObject;
+
+			switch (iObjectType)
+			{
+				case (int)ObjectTypes.MeshPolygon:
+					// math makes it very difficult for us to have a polygon of less than 3 sides, so check
+					// to make sure we have 3 or more
+					int numSides = Convert.ToInt32(text);
+					if (numSides > 2)
+					{
+						newObject = new MeshPolygon(DeviceManager.Instance.Device, numSides);
+					}
+					else
+					{
+						return null;
+					}
 					break;
+
+				case (int)ObjectTypes.MeshText:
+					System.Drawing.Font font = new System.Drawing.Font("Arial", 0.5f);
+					newObject = new MeshText(DeviceManager.Instance.Device, font, text);
+					break;
+						
+			
+
+				default:
+					return null;
 			}
 
-			return true;
+				return newObject;
 		}
 
 	}

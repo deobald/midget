@@ -7,9 +7,9 @@
     >
         <Build>
             <Settings
-                ApplicationIcon = "App.ico"
+                ApplicationIcon = "midget.ico"
                 AssemblyKeyContainerName = ""
-                AssemblyName = "MidgetUI"
+                AssemblyName = "Midget"
                 AssemblyOriginatorKeyFile = ""
                 DefaultClientScript = "JScript"
                 DefaultHTMLPageLayout = "Grid"
@@ -112,10 +112,29 @@
                     HintPath = "C:\WINNT\Microsoft.NET\Managed DirectX\v4.09.00.0900\Microsoft.DirectX.Direct3DX.dll"
                     AssemblyFolderKey = "hklm\dn\manageddx"
                 />
+                <Reference
+                    Name = "MidgetCameras"
+                    Project = "{3D3DD3A8-B7AE-4655-806B-C36F1C4623B3}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "collapsiblepanelbar"
+                    AssemblyName = "CollapsiblePanelBar"
+                    HintPath = "..\collapsiblepanelbar.dll"
+                />
+                <Reference
+                    Name = "DockingSuite"
+                    AssemblyName = "DockingSuite"
+                    HintPath = "..\DockingSuite.dll"
+                />
             </References>
         </Build>
         <Files>
             <Include>
+                <File
+                    RelPath = "app.config"
+                    BuildAction = "None"
+                />
                 <File
                     RelPath = "App.ico"
                     BuildAction = "Content"
@@ -126,13 +145,33 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "MagicShelf.cs"
-                    SubType = "UserControl"
+                    RelPath = "CurveSelectBox.cs"
+                    SubType = "Form"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "MagicShelf.resx"
-                    DependentUpon = "MagicShelf.cs"
+                    RelPath = "CurveSelectBox.resx"
+                    DependentUpon = "CurveSelectBox.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "EnhancedTextBox.cs"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "EnhancedTextBox.resx"
+                    DependentUpon = "EnhancedTextBox.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "InputBox.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "InputBox.resx"
+                    DependentUpon = "InputBox.cs"
                     BuildAction = "EmbeddedResource"
                 />
                 <File
@@ -146,13 +185,128 @@
                     BuildAction = "EmbeddedResource"
                 />
                 <File
-                    RelPath = "TimeControl.cs"
+                    RelPath = "MaterialEditor.cs"
                     SubType = "UserControl"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "TimeControl.resx"
-                    DependentUpon = "TimeControl.cs"
+                    RelPath = "MaterialEditor.resx"
+                    DependentUpon = "MaterialEditor.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "MidgetTreeNode.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "MidgetTreeView.cs"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "MidgetTreeView.resx"
+                    DependentUpon = "MidgetTreeView.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "ModifierShelf.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ModifierShelf.resx"
+                    DependentUpon = "ModifierShelf.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "NumericEnhancedTextBox.cs"
+                    SubType = "Component"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "NumericEnhancedTextBox.resx"
+                    DependentUpon = "NumericEnhancedTextBox.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "ObjectSelector.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ObjectSelector.resx"
+                    DependentUpon = "ObjectSelector.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "ObjectShelf.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ObjectShelf.resx"
+                    DependentUpon = "ObjectShelf.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "RenderPreview.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "RenderPreview.resx"
+                    DependentUpon = "RenderPreview.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "RenderProgress.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "RenderProgress.resx"
+                    DependentUpon = "RenderProgress.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "RenderSettingsForm.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "RenderSettingsForm.resx"
+                    DependentUpon = "RenderSettingsForm.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "SplashForm.cs"
+                    SubType = "Form"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "SplashForm.resx"
+                    DependentUpon = "SplashForm.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "TabBar.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "TabBar.resx"
+                    DependentUpon = "TabBar.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "TimelineControl.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "TimelineControl.resx"
+                    DependentUpon = "TimelineControl.cs"
                     BuildAction = "EmbeddedResource"
                 />
             </Include>

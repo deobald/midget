@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Midget3D", "Midget3D\Midget
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MidgetCameras", "MidgetCameras\MidgetCameras.csproj", "{3D3DD3A8-B7AE-4655-806B-C36F1C4623B3}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -21,6 +25,10 @@ Global
 		{3CDAF30A-1CA0-4685-82B0-AD2F01D691BB}.Debug.Build.0 = Debug|.NET
 		{3CDAF30A-1CA0-4685-82B0-AD2F01D691BB}.Release.ActiveCfg = Release|.NET
 		{3CDAF30A-1CA0-4685-82B0-AD2F01D691BB}.Release.Build.0 = Release|.NET
+		{3D3DD3A8-B7AE-4655-806B-C36F1C4623B3}.Debug.ActiveCfg = Debug|.NET
+		{3D3DD3A8-B7AE-4655-806B-C36F1C4623B3}.Debug.Build.0 = Debug|.NET
+		{3D3DD3A8-B7AE-4655-806B-C36F1C4623B3}.Release.ActiveCfg = Release|.NET
+		{3D3DD3A8-B7AE-4655-806B-C36F1C4623B3}.Release.Build.0 = Release|.NET
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

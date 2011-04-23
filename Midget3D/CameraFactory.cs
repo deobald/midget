@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Microsoft.DirectX;
 using Microsoft.DirectX.Direct3D;
+using Midget.Cameras;
 
 namespace Midget
 {
@@ -94,7 +95,7 @@ namespace Midget
 		/// </summary>
 		/// <param name="camera">The desired predifined camera</param>
 		/// <returns>A reference to the camera, this reference may be shared by multiple viewports</returns>
-		public Camera CreateCamera(PredefinedCameras camera)
+		public MidgetCamera CreateCamera(PredefinedCameras camera)
 		{
 			switch (camera)
 			{
@@ -103,77 +104,97 @@ namespace Midget
 					
 					// if the camera hasn't already been created, create it
 					if(cameraList[(int)PredefinedCameras.Perspective] == null)
+					{
 						return this.GenerateNewCamera("Perspective",(int)PredefinedCameras.Perspective,
 							CameraType.Perspective,
 							new Vector3(5, 5, 5), 
 							new Vector3(0, 0, 0), 
 							new Vector3(0, 1, 0));
+					}
 					else
+					{
 						return this.GetExistingCamera((int)PredefinedCameras.Perspective);
+					}
 				}
 				case PredefinedCameras.Front:
 				{
 					// if the camera hasn't already been created, create it
 					if(cameraList[(int)PredefinedCameras.Front] == null)
+					{
 						return this.GenerateNewCamera("Front",(int)PredefinedCameras.Front,
 							CameraType.Orthogonal,
-							new Vector3(0, 0, -75), 
-							new Vector3(0, 0, 1), 
+							new Vector3(0, 0, -10), 
+							new Vector3(0, 0, 0), 
 							new Vector3(0, 1, 0));
-
+					}
 					else
+					{
 						return this.GetExistingCamera((int)PredefinedCameras.Front);
+					}
 				}
 				case PredefinedCameras.Left:
 				{
 					// if the camera hasn't already been created, create it
 					if(cameraList[(int)PredefinedCameras.Left] == null)
+					{
 						return this.GenerateNewCamera("Left",(int)PredefinedCameras.Left,
 							CameraType.Orthogonal,
 							new Vector3(10, 0, 0), 
 							new Vector3(0, 0, 0), 
 							new Vector3(0, 1, 0));
-
+					}
 					else
+					{
 						return this.GetExistingCamera((int)PredefinedCameras.Left);
+					}
 				}
 				case PredefinedCameras.Back:
 				{
 					// if the camera hasn't already been created, create it
 					if(cameraList[(int)PredefinedCameras.Back] == null)
+					{
 						return this.GenerateNewCamera("Back",(int)PredefinedCameras.Back,
 							CameraType.Orthogonal,
-							new Vector3(0, 0, -10), 
+							new Vector3(0, 0, 10), 
 							new Vector3(0, 0, 0), 
 							new Vector3(0, 1, 0));
-
+					}
 					else
+					{
 						return this.GetExistingCamera((int)PredefinedCameras.Back);
+					}
 				}
 				case PredefinedCameras.Right:
 				{
 					// if the camera hasn't already been created, create it
 					if(cameraList[(int)PredefinedCameras.Right] == null)
+					{
 						return this.GenerateNewCamera("Right",(int)PredefinedCameras.Right,
 							CameraType.Orthogonal,
 							new Vector3(-10, 0, 0), 
 							new Vector3(0, 0, 0), 
 							new Vector3(0, 1, 0));
-
+					}
 					else
+					{
 						return this.GetExistingCamera((int)PredefinedCameras.Right);
+					}
 				}
 				case PredefinedCameras.Top:
 				{
 					// if the camera hasn't already been created, create it
 					if(cameraList[(int)PredefinedCameras.Top] == null)
+					{
 						return this.GenerateNewCamera("Top",(int)PredefinedCameras.Top,
 							CameraType.Orthogonal,
 							new Vector3(0, 10, 0), 
 							new Vector3(0, 0, 0), 
-							new Vector3(1, 0, 0));
+							new Vector3(0, 0, 1));
+					}
 					else
+					{
 						return this.GetExistingCamera((int)PredefinedCameras.Top);
+					}
 				}
 				default:
 					return null;
@@ -185,7 +206,7 @@ namespace Midget
 		/// </summary>
 		/// <param name="cameraID">The ID number of the camera</param>
 		/// <returns>A reference to the camera, this reference may be shared by multiple viewports</returns>
-		public Camera GetExistingCamera(int cameraID)
+		public MidgetCamera GetExistingCamera(int cameraID)
 		{
 			// if that camera doesn't exist return a null camera
 			if(cameraID >= this.NumberOfCameras)
@@ -197,7 +218,7 @@ namespace Midget
 			
 			// the camera already exists
 			else
-				return (Camera)cameraList[cameraID];
+				return (MidgetCamera)cameraList[cameraID];
 		}
 
 		/// <summary>
@@ -209,7 +230,7 @@ namespace Midget
 		/// <param name="cameraTarget">The point where the camera is focusing</param>
 		/// <param name="cameraUpVector">A vector representing up</param>
 		/// <returns>A reference to a customly created camera</returns>
-		public Camera CreateCamera(string cameraName, CameraType cameraType,
+		public MidgetCamera CreateCamera(string cameraName, CameraType cameraType,
 			Vector3 cameraPosition, Vector3 cameraTarget, Vector3 cameraUpVector)
 		{
 			return this.GenerateNewCamera(cameraName, this.NumberOfCameras + 1, cameraType,
@@ -217,7 +238,7 @@ namespace Midget
 		}
 
 		/// <summary>
-		/// The function that actual creates the brand new camera
+		/// The function that actually creates the brand new camera
 		/// </summary>
 		/// <param name="cameraName">The name of the camera</param>
 		/// <param name="location">The location in the cameraList array where the camera is too be stored.  
@@ -227,7 +248,7 @@ namespace Midget
 		/// <param name="cameraTarget">The point where the camera is focusing</param>
 		/// <param name="cameraUpVector">A vector representing up</param>
 		/// <returns>A reference to a customly created camera</returns>
-		private Camera GenerateNewCamera(string cameraName, int location, CameraType cameraType,
+		private MidgetCamera GenerateNewCamera(string cameraName, int location, CameraType cameraType,
 			Vector3 cameraPosition, Vector3 cameraTarget, Vector3 cameraUpVector)
 		{
 			// if the size of cameralist has to be increased
@@ -240,11 +261,11 @@ namespace Midget
 			switch (cameraType)
 			{
 				case CameraType.Orthogonal:
-					cameraList[location] =  new OrthogonalCamera( cameraPosition, cameraTarget, cameraUpVector);
+					cameraList[location] =  new OrthogonalMidgetCamera( cameraPosition, cameraTarget, cameraUpVector, cameraName);
 					break;
 
 				case CameraType.Perspective:
-					cameraList[location] =  new PerspectiveCamera( cameraPosition, cameraTarget, cameraUpVector);
+					cameraList[location] =  new PerspectiveMidgetCamera( cameraPosition, cameraTarget, cameraUpVector, cameraName);
 					break;
 
 				default:
@@ -254,7 +275,7 @@ namespace Midget
 			//store the name of camera
 			cameraNameList[location] = cameraName;
 
-			return (Camera)cameraList[location];
+			return (MidgetCamera)cameraList[location];
 		}
 
 		/// <summary>
@@ -263,6 +284,14 @@ namespace Midget
 		public int NumberOfCameras
 		{
 			get { return cameraList.Count; }
+		}
+	
+		/// <summary>
+		/// Returns a list of all the camera names
+		/// </summary>
+		public ArrayList CameraNames
+		{
+			get { return cameraNameList; } 
 		}
 	}
 }
